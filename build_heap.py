@@ -1,14 +1,16 @@
+import os
+
 # python3
-#221RDB216
+# 221RDB216
+
 
 def build_heap(data):
     swaps = []
-size = len(data)
+    size = len(data)
     for i in range(size // 2, -1, -1):
         darbiba(data, i, swaps)
-
-
     return swaps
+
 
 def darbiba(data, i, swaps):
     size = len(data)
@@ -33,7 +35,7 @@ def main():
         assert len(data) == n
     elif "F" in inputz:
         input_fails = input()
-        locations = './tests/'
+        locations = "./tests/"
         locations_faila = os.path.join(locations, input_fails)
         with open(locations_faila, mode="r") as file:
             n = int(file.readline())
@@ -42,8 +44,8 @@ def main():
     print(len(swaps))
     for i, j in swaps:
         print(i, j)
-        
+
+
 if __name__ == "__main__":
     main()
-    #RobertsKarlisKaudze
-
+    # RobertsKarlisKaudze
