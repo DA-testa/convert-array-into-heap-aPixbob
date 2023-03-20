@@ -1,42 +1,49 @@
 # python3
-
+#221RDB216
 
 def build_heap(data):
     swaps = []
-    # TODO: Creat heap and heap sort
-    # try to achieve  O(n) and not O(n2)
+size = len(data)
+    for i in range(size // 2, -1, -1):
+        darbiba(data, i, swaps)
 
 
     return swaps
 
+def darbiba(data, i, swaps):
+    size = len(data)
+    mindex = i
+    leftS = 2 * i + 1
+    rightS = 2 * i + 2
+    if leftS < size and data[leftS] < data[mindex]:
+        mindex = leftS
+    if rightS < size and data[rightS] < data[mindex]:
+        mindex = rightS
+    if mindex != i:
+        swaps.append((i, mindex))
+        data[i], data[mindex] = data[mindex], data[i]
+        darbiba(data, mindex, swaps)
+
 
 def main():
-    
-    # TODO : add input and corresponding checks
-    # add another input for I or F 
-    # first two tests are from keyboard, third test is from a file
-
-
-    # input from keyboard
-    n = int(input())
-    data = list(map(int, input().split()))
-
-    # checks if lenght of data is the same as the said lenght
-    assert len(data) == n
-
-    # calls function to assess the data 
-    # and give back all swaps
+    inputz = input()
+    if "I" in inputz:
+        n = int(input())
+        data = list(map(int, input().split()))
+        assert len(data) == n
+    elif "F" in inputz:
+        input_fails = input()
+        locations = './tests/'
+        locations_faila = os.path.join(locations, input_fails)
+        with open(locations_faila, mode="r") as file:
+            n = int(file.readline())
+            data = list(map(int, file.readline().split()))
     swaps = build_heap(data)
-
-    # TODO: output how many swaps were made, 
-    # this number should be less than 4n (less than 4*len(data))
-
-
-    # output all swaps
     print(len(swaps))
     for i, j in swaps:
         print(i, j)
-
-
+        
 if __name__ == "__main__":
     main()
+    #RobertsKarlisKaudze
+
